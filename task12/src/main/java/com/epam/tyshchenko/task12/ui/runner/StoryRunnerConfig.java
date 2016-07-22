@@ -1,13 +1,12 @@
 package com.epam.tyshchenko.task12.ui.runner;
 
 import com.epam.tyshchenko.task12.ui.GoogleUiTest;
-import org.jbehave.core.ConfigurableEmbedder;
 import org.jbehave.core.configuration.Configuration;
 import org.jbehave.core.configuration.MostUsefulConfiguration;
-import org.jbehave.core.embedder.Embedder;
 import org.jbehave.core.io.CodeLocations;
 import org.jbehave.core.io.LoadFromClasspath;
 import org.jbehave.core.io.StoryFinder;
+import org.jbehave.core.junit.JUnitStories;
 import org.jbehave.core.reporters.Format;
 import org.jbehave.core.reporters.StoryReporterBuilder;
 import org.jbehave.core.steps.InjectableStepsFactory;
@@ -22,7 +21,7 @@ import java.util.List;
 /**
  * The type Story runner.
  */
-public class StoryRunnerConfig extends ConfigurableEmbedder {
+public class StoryRunnerConfig extends JUnitStories {
 
     @Override
     public Configuration configuration() {
@@ -48,17 +47,17 @@ public class StoryRunnerConfig extends ConfigurableEmbedder {
                 Arrays.asList("**/*.story"), Arrays.asList(""));
     }
 
-    @Override
-    public void run() {
-        Embedder embedder = configuredEmbedder();
-        embedder.embedderControls().doIgnoreFailureInStories(true)
-                .doIgnoreFailureInView(true);
-        try {
-            embedder.runStoriesAsPaths(storyPaths());
-        } finally {
-            embedder.generateCrossReference();
-        }
-    }
+//    @Override
+//    public void run() {
+//        Embedder embedder = configuredEmbedder();
+//        embedder.embedderControls().doIgnoreFailureInStories(true)
+//                .doIgnoreFailureInView(true);
+//        try {
+//            embedder.runStoriesAsPaths(storyPaths());
+//        } finally {
+//            embedder.generateCrossReference();
+//        }
+//    }
 
 
 }

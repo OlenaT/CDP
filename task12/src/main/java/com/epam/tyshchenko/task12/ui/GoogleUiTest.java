@@ -2,8 +2,10 @@ package com.epam.tyshchenko.task12.ui;
 
 import static org.junit.Assert.assertTrue;
 
+import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
+import com.epam.tyshchenko.task12.ui.runner.Constants;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
@@ -25,6 +27,9 @@ public class GoogleUiTest extends Steps {
      */
     public GoogleUiTest() {
         PropertyLoader.populate(this);
+        Configuration.browser = Constants.BROWSER;
+        Configuration.browserSize = "1920x1080";
+        Configuration.timeout = Constants.WAIT;
     }
 
     @Property("url")

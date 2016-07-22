@@ -19,6 +19,6 @@ public class StoryRunner {
         Configuration.browser = Constants.BROWSER;
         Configuration.browserSize = "1920x1080";
         Configuration.timeout = Constants.WAIT;
-        runnerConfig.run();
+        //runnerConfig.run();
     }
 }
