@@ -1,6 +1,6 @@
 package com.epam.tyshchenko.task12.unit;
 
-import com.epam.tyshchenko.task12.Math;
+import com.epam.tyshchenko.task12.plain.Math;
 import org.junit.Before;
 import org.junit.Test;
 import ru.yandex.qatools.properties.PropertyLoader;
@@ -13,9 +13,9 @@ import static org.junit.Assert.assertEquals;
  * Created by Olena_Tyshchenko on 18.07.2016.
  */
 @Resource.Classpath("properties/test.properties")
-public class MathUnitTest {
+public class UnitTest {
 
-    public MathUnitTest(){
+    public UnitTest(){
         PropertyLoader.populate(this);
     }
 

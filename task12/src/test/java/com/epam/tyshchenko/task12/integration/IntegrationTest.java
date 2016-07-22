@@ -1,7 +1,7 @@
 package com.epam.tyshchenko.task12.integration;
 
-import com.epam.tyshchenko.task12.Math;
-import com.epam.tyshchenko.task12.Text;
+import com.epam.tyshchenko.task12.plain.Math;
+import com.epam.tyshchenko.task12.plain.Text;
 import org.junit.Before;
 import org.junit.Test;
 import ru.yandex.qatools.properties.PropertyLoader;

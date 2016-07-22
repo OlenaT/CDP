@@ -1,4 +1,4 @@
-package com.epam.tyshchenko.task12;
+package com.epam.tyshchenko.task12.plain;
 
 /**
  * Created by Olena_Tyshchenko on 18.07.2016.

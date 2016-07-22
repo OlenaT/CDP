@@ -1,5 +1,7 @@
 package com.epam.tyshchenko.task12.ui;
 
+import static org.junit.Assert.assertTrue;
+
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
@@ -12,7 +14,7 @@ import ru.yandex.qatools.properties.PropertyLoader;
 import ru.yandex.qatools.properties.annotations.Property;
 import ru.yandex.qatools.properties.annotations.Resource;
 
-import static org.junit.Assert.assertTrue;
+
 
 /**
  * Created by Olena_Tyshchenko on 18.07.2016.
@@ -20,6 +22,9 @@ import static org.junit.Assert.assertTrue;
 @Resource.Classpath("properties/test.properties")
 public class GoogleUiTest extends Steps {
 
+    /**
+     * Instantiates a new Google ui test.
+     */
     public GoogleUiTest() {
         PropertyLoader.populate(this);
         Configuration.browser = Constants.BROWSER;
@@ -32,17 +37,30 @@ public class GoogleUiTest extends Steps {
 
     private GooglePage googlePage = new GooglePage();
 
+    /**
+     * Open google.
+     */
     @Given("I open Google Search")
     public void openGoogle() {
         Selenide.open(url);
     }
 
+    /**
+     * Type text.
+     *
+     * @param text the text
+     */
     @When("I type text $text")
     public void typeText(String text) {
         googlePage.searchField().val(text);
         googlePage.searchButton().click();
     }
 
+    /**
+     * Check results.
+     *
+     * @param text the text
+     */
     @Then("search results should contain text $text")
     public void checkResults(String text) {
         for (SelenideElement el : googlePage.searchResults()) {

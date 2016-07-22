@@ -18,6 +18,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * The type Story runner.
+ */
 public class StoryRunner extends JUnitStories {
 
     @Override
@@ -39,8 +42,6 @@ public class StoryRunner extends JUnitStories {
         return new StoryFinder().findPaths(CodeLocations.codeLocationFromClass(this.getClass()),
                 Arrays.asList("**/*.story"), Arrays.asList(""));
     }
-
-
 
 
 }
