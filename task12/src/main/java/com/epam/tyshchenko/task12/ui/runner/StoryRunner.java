@@ -14,7 +14,7 @@ public class StoryRunner {
      *
      * @param args the input arguments
      */
-    public static void main(String[] args) {
+    public static void main(String... args) {
         StoryRunnerConfig runnerConfig = new StoryRunnerConfig();
         Configuration.browser = Constants.BROWSER;
         Configuration.browserSize = "1920x1080";
