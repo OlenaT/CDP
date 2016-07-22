@@ -1,24 +1,59 @@
 package com.epam.tyshchenko.task12.ui.runner;
 
-import com.codeborne.selenide.Configuration;
+import com.epam.tyshchenko.task12.ui.GoogleUiTest;
+import org.jbehave.core.configuration.Configuration;
+import org.jbehave.core.configuration.MostUsefulConfiguration;
+import org.jbehave.core.io.CodeLocations;
+import org.jbehave.core.io.LoadFromClasspath;
+import org.jbehave.core.io.StoryFinder;
+import org.jbehave.core.junit.JUnitStories;
+import org.jbehave.core.reporters.Format;
+import org.jbehave.core.reporters.StoryReporterBuilder;
+import org.jbehave.core.steps.InjectableStepsFactory;
+
+import org.jbehave.core.steps.InstanceStepsFactory;
+import org.jbehave.core.steps.Steps;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
- * Created by Olena_Tyshchenko on 22.07.2016.
+ * The type Story runner.
  */
-public class StoryRunner {
+public class StoryRunner extends JUnitStories {
 
-    private StoryRunner(){}
-
-    /**
-     * The entry point of application.
-     *
-     * @param args the input arguments
-     */
-    public static void main(String... args) {
-        StoryRunnerConfig runnerConfig = new StoryRunnerConfig();
-        Configuration.browser = Constants.BROWSER;
-        Configuration.browserSize = "1920x1080";
-        Configuration.timeout = Constants.WAIT;
-        //runnerConfig.run();
+    @Override
+    public Configuration configuration() {
+        return new MostUsefulConfiguration().useStoryLoader(new LoadFromClasspath(this.getClass().getClassLoader()))
+                .useStoryReporterBuilder(
+                        new StoryReporterBuilder().withDefaultFormats().withFormats(Format.HTML, Format.CONSOLE));
     }
+
+    @Override
+    public InjectableStepsFactory stepsFactory() {
+        List<Steps> stepFileList = new ArrayList<Steps>();
+        stepFileList.add(new GoogleUiTest());
+        return new InstanceStepsFactory(configuration(), stepFileList);
+    }
+
+    @Override
+    protected List<String> storyPaths() {
+        return new StoryFinder().findPaths(CodeLocations.codeLocationFromClass(this.getClass()),
+                Arrays.asList("**/*.story"), Arrays.asList(""));
+    }
+
+//    @Override
+//    public void run() {
+//        Embedder embedder = configuredEmbedder();
+//        embedder.embedderControls().doIgnoreFailureInStories(true)
+//                .doIgnoreFailureInView(true);
+//        try {
+//            embedder.runStoriesAsPaths(storyPaths());
+//        } finally {
+//            embedder.generateCrossReference();
+//        }
+//    }
+
+
 }
