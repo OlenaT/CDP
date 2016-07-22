@@ -52,7 +52,7 @@
                 <executions>
                     <execution>
                         <id>run-stories-as-embeddables</id>
-                        <phase>process-test-classes</phase>
+                        <phase>test</phase>
                         <configuration>
                             <includes>
                                 <include>**/StoryRunner.java</include>
